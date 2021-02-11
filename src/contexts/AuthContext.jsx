@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { AUTH_API, JSON_API} from '../helpers/constants';
+import { AUTH_API, JSON_API} from '../helpers/constant';
 import axios from 'axios'
 
 export const authContext = React.createContext();
