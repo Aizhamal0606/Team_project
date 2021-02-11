@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { AUTH_API } from '../helpers/constant';
+import { AUTH_API, JSON_API} from '../helpers/constant';
 import axios from 'axios'
 
 export const authContext = React.createContext();
@@ -24,7 +24,7 @@ const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE)
 
     const getreviewData = async () => {
-        let { data } = await axios(`http://localhost:8000/comment`)
+        let { data } = await axios(`${JSON_API}/comment`)
         dispatch({
             type: "GET_CONTACTS_DATA",
             payload: data
@@ -32,12 +32,12 @@ const AuthContextProvider = ({ children }) => {
     }
 
     const addTask = async (newTask) => {
-        await axios.post('http://localhost:8000/comment', newTask)
+        await axios.post(`${JSON_API}/comment`, newTask)
         getreviewData()
     }
 
     const deleteTask = async (id) => {
-        await axios.delete(`http://localhost:8000/comment/${id}`)
+        await axios.delete(`${JSON_API}/comment/${id}`)
         getreviewData()
     }
 
